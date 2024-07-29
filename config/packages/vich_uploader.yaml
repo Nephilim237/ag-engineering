@@ -1,0 +1,62 @@
+vich_uploader:
+    db_driver: orm
+
+    metadata:
+        type: attribute
+
+    mappings:
+        users:
+            uri_prefix: '%path.member_images%'
+            upload_destination: '%kernel.project_dir%/public/%path.member_images%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        posts:
+            uri_prefix: '%path.post_images%'
+            upload_destination: '%kernel.project_dir%/public/%path.post_images%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        homeBanners:
+            uri_prefix: '%path.home_banners%'
+            upload_destination: '%kernel.project_dir%/public/%path.home_banners%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        testimonies:
+            uri_prefix: '%path.testimonies%'
+            upload_destination: '%kernel.project_dir%/public/%path.testimonies%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        services:
+            uri_prefix: '%path.services%'
+            upload_destination: '%kernel.project_dir%/public/%path.services%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        services_icons:
+            uri_prefix: '%path.services.icons%'
+            upload_destination: '%kernel.project_dir%/public/%path.services.icons%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        prestations_icons:
+            uri_prefix: '%path.prestations.icons%'
+            upload_destination: '%kernel.project_dir%/public/%path.prestations.icons%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false
+
+        our_work:
+            uri_prefix: '%path.our_work%'
+            upload_destination: '%kernel.project_dir%/public/%path.our_work%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false

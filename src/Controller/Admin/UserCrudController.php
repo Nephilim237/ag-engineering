@@ -1,0 +1,122 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
+class UserCrudController extends AbstractCrudController
+{
+    public const UPLOAD_USER_BASE_PATH = 'uploads/images/users';
+    public const UPLOAD_USER_ROOT_PATH = 'public/uploads/images/users';
+
+    public function __construct(private readonly UserPasswordHasherInterface $hasher)
+    {
+    }
+
+    public static function getEntityFqcn(): string
+    {
+        return User::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return parent::configureCrud($crud)
+            ->setPageTitle('index', 'Liste des Utilisateurs')
+            ->setPageTitle('new', 'Ajouter un nouvel employé');
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return parent::configureActions($actions)
+            ->update('index', 'new', function (Action $action) {
+                return $action
+                    ->setLabel('Nouvel Employé')
+                    ->setIcon('fas fa-user-plus')
+                    ->setCssClass('text-capitalize');
+            })
+            ->update('index', Action::EDIT, function (Action $action) {
+                return $action
+                    ->setLabel('Modifier')
+                    ->setIcon('fas fa-user-edit')
+                    ->setCssClass('text-capitalize');
+            })
+            ->update('index', Action::DELETE, function (Action $action) {
+                return $action
+                    ->setLabel('Supprimer')
+                    ->setIcon('fas fa-user-slash')
+                    ->setCssClass('text-capitalize');
+            })
+            ->update('new', Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Sauvegarder')
+                    ->setIcon('fas fa-save')
+                    ->setCssClass('text-capitalize');
+            })
+            ->update('new', Action::SAVE_AND_ADD_ANOTHER, function (Action $action) {
+                return $action
+                    ->setLabel('Sauvegarder et Ajouter')
+                    ->setIcon('fas fa-save')
+                    ->setCssClass('text-capitalize');
+            });
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id')->hideOnForm(),
+            TextField::new('firstname', 'Prénom'),
+            TextField::new('name', 'Nom'),
+            TextField::new('slug', 'Slug')->onlyOnIndex(),
+            EmailField::new('email', 'Email'),
+            ChoiceField::new('roles', 'role')->allowMultipleChoices()->setChoices([
+                'Directeur Général' => 'ROLE_BOSS',
+                'Administrateur Système' => 'ROLE_ADMIN_SYS',
+                'Administrateur' => 'ROLE_ADMIN',
+                'Modérateur' => 'ROLE_MODO',
+                'Employé' => 'ROLE_EMPLOYEE',
+                'Rédacteur' => 'ROLE_WRITER',
+            ])->onlyOnForms(),
+            TextField::new('imageFile', 'Illustration')
+                ->hideOnIndex()
+                ->setFormType(VichImageType::class)->setColumns('col-sm-12 col-md-3'),
+            ImageField::new('profileImage', 'Photo de Profil')
+                ->hideOnForm()
+                ->setBasePath(self::UPLOAD_USER_BASE_PATH)
+                ->setUploadDir(self::UPLOAD_USER_ROOT_PATH)
+                ->setSortable(false),
+        ];
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if (!$entityInstance instanceof User) return;
+        $password = $this->hasher->hashPassword($entityInstance, "1234567890");
+        $entityInstance
+            ->setPassword($password)
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setCreatedAt(new \DateTimeImmutable());
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if (!$entityInstance instanceof User) return;
+        $entityInstance
+            ->setUpdatedAt(new \DateTimeImmutable());
+        parent::updateEntity($entityManager, $entityInstance); // TODO: Change the autogenerated stub
+    }
+}

@@ -1,0 +1,56 @@
+<section class="welcome py-md-60 padding-top-150 padding-bottom-150">
+    <div class="container">
+
+{#        {% if services | length > 0 %}#}
+            <!-- Heading -->
+            <div class="heading text-center">
+                <h3>Bienvenue sur <span>AG Engineering</span></h3>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at blanditiis culpa enim illum obcaecati, quasi! Deserunt nisi
+                    perferendis voluptas!</p>
+            </div>
+{#        {% endif %}#}
+
+        <!-- INTRO SERVICES -->
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="row">
+                    {% if services | length > 0 %}
+                        {% for service in services %}
+                            <li class="col-md-6">
+                                <img class="img-responsive" src="{{ vich_uploader_asset(service, 'imageFile') | imagine_filter('service_thumbnail') }}"
+                                     alt="{{ service
+                                     .title }}">
+                                <div class="intro-ser">
+                                    <div class="tag"><img src="{{ vich_uploader_asset(service, 'iconImage') }}" alt="Icone {{ service.icon }}"></div>
+                                    <h6 class="font-normal no-margin margin-bottom-20">{{ service.title }}</h6>
+                                    <p class="line-height-22">{{ service.description | striptags | u.truncate(200, '...', false) }}</p>
+                                    <a href="#" class="font-pt">En savoir plus</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- INTRO INTRO -->
+            <div class="col-md-4">
+                <ul class="services-intro">
+                    {% if prestations | length > 0 %}
+                        {% for prestation in prestations %}
+                            <li>
+                                <div class="media-left">
+                                    <div class="icon"><img src="{{ vich_uploader_asset(prestation, 'iconImage') }}" alt="Icon de {{ prestation.title }}"></div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="font-normal margin-bottom-10">{{ prestation.title }}</h6>
+                                    <p>{{ prestation.description }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

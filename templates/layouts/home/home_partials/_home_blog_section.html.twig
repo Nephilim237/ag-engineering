@@ -1,0 +1,52 @@
+<section class="blog py-md-60 padding-top-150 padding-bottom-150">
+
+    {% if posts | length > 0 %}
+        <div class="container">
+            <!-- Heading -->
+            <div class="heading text-center">
+                <h3>Faites un tour sur notre <span>Blog</span></h3>
+                <hr>
+                <p>The Love Boat soon will be making another run the Love Boat promises something for everyone
+                    Today still wanted by the government they survive as soldiers of fortune.</p>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+                {% for post in posts %}
+                    <!-- BLOG -->
+                    <div class="col-md-6 px-5 my-5">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <img class="img-responsive" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="{{ post.title }}">
+                                {#<div class="date text-uppercase">#}
+                                {#</div>#}
+                                {# <div class="date text-uppercase"> {{ post.createdAt | date('d M', 'Africa/Douala') }}</div> #}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="post-info">
+                                    <div class="author-and-date d-flex justify-content-between my-3">
+                                        <span class="">By {{ post.author.name }}</span>
+                                        <span class="post-date font-italic">
+                                            {{ post.createdAt | format_datetime('medium', 'medium', locale='fr', timezone='Africa/Douala') }}
+                                        </span>
+
+                                    </div>
+                                    <a href="#" class="tittle-post font-oswald">{{ post.title }} </a>
+                                    <hr class="main">
+                                    <p class="letter-space-1">{{ post.content | striptags | u.truncate(120, '...', false) }}</p>
+                                    <a href="{{ path('blog_single', {slug: post.slug}) }}" class="btn font-pt">Lire l'article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="heading text-center">
+            <h3>Aucune <span>Publication </span> Pour le moment</h3>
+            <hr>
+            <p>Revenez plus tard</p>
+        </div>
+    {% endif %}
+</section>

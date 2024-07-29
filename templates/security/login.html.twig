@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se Connecter!
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="a-login py-5 d-flex align-items-center" id="a-login">
+		<div class="container my-5 h-100">
+			<div class="row h-100">
+				<div class="col-md-6 col-sm-12 px-5 d-flex flex-wrap">
+					<h1 class="release-rate w-100 text-center">Se connecter</h1>
+					{% if error %}
+						<div class="alert alert-danger w-100 text-center fw-bold font-20px">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3 w-100">
+							Vous etes connectés en tant que
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Se Déconnecter.</a>
+						</div>
+					{% endif %}
+				</div>
+				<div class="col-md-6 col-sm-12 px-5">
+					<form method="post">
+
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<div class="mb-5">
+							<label for="username" class="form-label fw-bold">Email:
+							</label>
+							<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" required placeholder="ivantrottoir@gmail.com">
+						</div>
+						<div class="mb-5">
+							<label for="password" class="form-label fw-bold">Mot de passe:
+							</label>
+							<input type="password" name="_password" id="password" class="form-control" required>
+						</div>
+						<div class="mb-5">
+							<button type="submit" class="btn btn-primary btn-block btn-lg px-5 py-3 fw-bold">Se connecter</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

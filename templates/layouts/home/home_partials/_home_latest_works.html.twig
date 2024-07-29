@@ -1,0 +1,42 @@
+
+<section class="latest-work light-gray-bg py-md-60 padding-top-150 padding-bottom-150">
+    <div class="container">
+
+        <!-- Work -->
+        <div class="heading mb-5 white text-center">
+            <h3> Nos <span> Réalisations </span></h3>
+            <hr>
+        </div>
+        <div class="portfolio-wrapper">
+            <div class="filter padding-bottom-24">
+                <div class="text-right">
+                    <ul>
+                        <li><a class="active" data-toggle="tab" href="#" data-filter="*">Tous Nos Projets </a>|</li>
+                        {% for workCategorie in workCategories %}
+                            <li><a href="#" data-filter=".{{ workCategorie.slug }}">{{ workCategorie.title }} </a>|</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- ITEMS -->
+            <ul class="items row">
+                {% for work in works %}
+                    <!-- ITEM -->
+                    <li class="item col-md-3 mb-3 {% for category in work.workCategory %} {{ category.slug }} {% endfor %}">
+                        <div class="gal-item">
+                            <!-- GALLERY IMAGE -->
+                            <img src="{{ vich_uploader_asset(work, 'vichWorkImageFile') }}" alt="{{ work.title }}" class="img-responsive">
+                            <!-- Hover Info -->
+                            <div class="hover-info">
+                                <h6>{{ work.title }}</h6>
+                                <p> {{ work.description | striptags | u.truncate(20, '...', false) }}</p>
+                                <a href="#"><i class="ion-android-arrow-forward"></i></a></div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

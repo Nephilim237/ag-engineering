@@ -1,0 +1,236 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- SUB BANNER -->
+    <section class="sub-bnr">
+        <div class="position-center-center">
+            <div class="container">
+                <h4>{{ post.title }}</h4>
+                <hr class="main">
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('app_home') }}">Retour à l'accueil</a></li>
+                    <li class="active">{{ post.title }}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="scroll"><a href="#content" class="go-down"></a></div>
+    </section>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- LATEST WORK -->
+        <section class="blog blog-post padding-top-100 padding-bottom-100">
+            <div class="container">
+
+                <!-- NEWS -->
+                <div class="news news-page news-post">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-12">
+                            {#<a href="#." class="tittle-post font-oswald">{{ post.title }}</a>#}
+                            {#<hr class="main margin-top-20 margin-bottom-50">#}
+
+                            <!-- NEWS POST -->
+                            <div class="col-md-12 no-padding">
+                                <img class="img-responsive" src="{{ asset('uploads/images/posts/' ~ post.postImage) }}" alt="{{ post.title }}">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="author-and-date d-flex justify-content-between my-3">
+                                <span class="">By {{ post.author.name }}</span>
+                                <span class="post-date font-italic">
+                                            {{ post.createdAt | format_datetime('medium', 'medium', locale='fr', timezone='Africa/Douala') }}
+                                </span>
+
+                            </div>
+                            <div class="post-info margin-top-50">
+                                {{ post.content | raw }}
+                            </div>
+
+                            <!--======= PAGES =========-->
+                            <nav>
+                                <ul class="pager">
+                                    <li class="previous"><a class="font-lora" href="#"><span aria-hidden="true">&larr;</span> Précédent</a></li>
+                                    <li class="next"><a class="font-lora" href="#">Suivant <span aria-hidden="true">&rarr;</span></a></li>
+                                </ul>
+                            </nav>
+
+                            <!--=======  ADMIN INFO =========-->
+                            <div class="admin-info">
+                                <ul class="row">
+                                    <li class="col-xs-3 no-padding text-center"><img class="img-responsive" src="images/avatar-admin.jpg" alt=""></li>
+                                    <li class="col-xs-9 no-padding">
+                                        <h5 class="text-uppercase no-margin">{{ post.author.name }}</h5>
+                                        <hr class="main margin-top-10 margin-bottom-10">
+                                        <p>He's a demon on wheels. Here's the story of a man named Brady who was busy with three boys of his own. Texas tea.
+                                            Maybe you and me were never meant to be. But baby think of me once in awhile. I'm at WKRP in Cincinnati.</p>
+                                        <ul class="social_icons">
+                                            <li class="facebook"><a href="#."><i class="fa fa-facebook"></i> </a></li>
+                                            <li class="twitter"><a href="#."><i class="fa fa-twitter"></i> </a></li>
+                                            <li class="linkedin"><a href="#."><i class="fa fa-linkedin"></i> </a></li>
+                                            <li class="pinterest"><a href="#."><i class="fa fa-pinterest"></i> </a></li>
+                                            <li class="tumblr"><a href="#."><i class="fa fa-tumblr"></i> </a></li>
+                                            <li class="googleplus"><a href="#."><i class="fa fa-google-plus"></i> </a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!--=======  COMMENTS =========-->
+                            <div class="comments margin-top-80">
+                                <h4 class="text-uppercase font-normal">comments (3)</h4>
+                                <hr class="main">
+                                <ul class="media-list">
+
+                                    <!--=======  COMMENTS =========-->
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object img-responsive" src="images/coment-avatar-1.jpg" alt="">
+                                                <br>
+                                            </a></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">Larsen Mortin<span> July 10, 2015</span></h6>
+                                            <a href="#." class="btn btn-yellow raply">Reply</a>
+                                            <p>So lets make the most of this beautiful day. Since we're together. It's time to play the music. It's time to
+                                                light the lights. It's time to meet the Muppets on the muppet Five passengers set sail that day for a three.
+                                                hour tour a three hour tour</p>
+                                        </div>
+                                    </li>
+
+                                    <!--=======  COMMENTS =========-->
+                                    <li class="media margin-left-80">
+                                        <div class="media-left"><a href="#"> <img class="media-object img-responsive" src="images/coment-avatar-2.jpg"
+                                                                                  alt="..."> </a></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">Jhon Kennadi <span> 10 may 2015 -10.00 Am</span></h6>
+                                            <a href="#." class="btn btn-yellow raply">Reply</a>
+                                            <p>Taque ipsa quae abe illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemosala enim
+                                                ipsam volupitatem quia voluptas sit aspernatur aut odit aut fugite.</p>
+                                        </div>
+                                    </li>
+
+                                    <!--=======  COMMENTS =========-->
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object img-responsive" src="images/coment-avatar-3.jpg"
+                                                                                  alt="..."> </a></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">Rock Lancer <span>10 may 2015 -10.00 Am</span></h6>
+                                            <a href="#." class="btn btn-yellow raply">Reply</a>
+                                            <p>Taque ipsa quae abe illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemosala enim
+                                                ipsam volupitatem quia voluptas sit aspernatur aut odit aut fugite.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!--=======  LEAVE COMMENTS =========-->
+                                <h4 class="text-uppercase font-normal margin-top-50">leave a comment</h4>
+                                <hr class="main">
+                                <form>
+                                    <ul class="row">
+                                        <li class="col-sm-6">
+                                            <label> Name
+                                                <input type="text" class="form-control" name="name" placeholder="">
+                                            </label>
+                                        </li>
+                                        <li class="col-sm-6">
+                                            <label> Email
+                                                <input type="text" class="form-control" name="name" placeholder="">
+                                            </label>
+                                        </li>
+                                        <li class="col-sm-12">
+                                            <label> MESSAGE
+                                                <textarea class="form-control"></textarea>
+                                            </label>
+                                        </li>
+                                        <li class="col-sm-12">
+                                            <button type="submit" class="btn btn-yellow">Post comment</button>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!--======= Side Bar =========-->
+                        <div class="col-md-3 col-sm-12">
+                            <div class="side-bar mx-5">
+
+                                <!--======= Search =========-->
+                                <div class="search">
+                                    <input class="form-control" type="search" placeholder="Rechercher">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+
+                                <!--======= Categories =========-->
+                                {% if categories | length > 0 %}
+                                    <h5 class="side-tittle margin-top-50">Voir Dans Une Catégorie </h5>
+                                    <hr class="main">
+                                    <ul class="cate">
+                                        {% for category in categories %}
+                                            <li><a href="#.">{{ category.title }} </a></li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <h5 class="side-tittle margin-top-50">Retrouvez Nos Catégories Bientot </h5>
+                                {% endif %}
+
+                                <!--======= Recent Posts =========-->
+                                <h5 class="side-tittle margin-top-50">Posts Récents </h5>
+                                <hr class="main">
+                                <ul class="papu-post">
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-1.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-2.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be</a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-3.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-4.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!--======= Archives =========-->
+                                {#<h5 class="side-tittle margin-top-50">Archives </h5>#}
+                                {#<hr class="main">#}
+                                {#<ul class="cate">#}
+                                {#    <li><a href="#.">June <span>10</span></a></li>#}
+                                {#    <li><a href="#.">May <span>21</span></a></li>#}
+                                {#    <li><a href="#.">April <span>58</span></a></li>#}
+                                {#    <li><a href="#.">March 2015 <span>25</span></a></li>#}
+                                {#</ul>#}
+
+
+                                <h5 class="side-tittle margin-top-50">Thèmes </h5>
+                                <hr class="main">
+
+                                {% if categories | length > 0 %}
+                                <ul class="tags">
+                                    {% for category in categories %}
+                                        <li><a href="#.">{{ category.title }} </a></li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+    base_path: "bundles/ckeditor"
+    js_path: "bundles/ckeditor/ckeditor.js"
+    default_config: age
+    configs:
+        age:
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            toolbar: full
+            skin: "moono-dark,/bundles/ckeditor/skins/moono-dark/"
