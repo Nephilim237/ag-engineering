@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous Contater{% endblock %}
+
+{% block body %}
+    <!-- SUB BANNER -->
+    <section class="sub-bnr">
+        <div class="position-center-center">
+            <div class="container">
+                <h4>Nous Contacter</h4>
+                <hr class="main">
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li class="active">Nous Contacter</li>
+                </ol>
+            </div>
+        </div>
+        <div class="scroll"><a href="#content" class="go-down"></a></div>
+    </section>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- LATEST WORK -->
+        <section class="contact-page padding-top-100 padding-bottom-100">
+            <div class="container">
+                <div class="row margin-top-100 margin-bottom-100">
+                    <div class="col-md-8">
+                        <div class="heading text-left margin-bottom-20">
+                            <h3> En Quoi Pouvons-nous <span>Vous Aider?</span></h3>
+                            <hr>
+                        </div>
+                        <p>Laissez-nous un message et expliquez-nous quelle est votre préoccupation. Un de nos experts vous répondra le plus tot possible.</p>
+
+
+                        <!-- Form  -->
+                        <div class="margin-top-50">
+                            <div class="contact-form pe-5" id="contact-form">
+                                <!-- Success Msg -->
+                                {% for message in app.flashes('success') %}
+                                    <div id="contact_message" class="success-msg">
+                                        <i class="fa fa-paper-plane-o"></i>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {{ form_start(contactForm) }}
+                                <div class="mb-5">
+                                    {{ form_row(contactForm.sender) }}
+                                </div>
+                                <div class="mb-5">
+                                    {{ form_row(contactForm.emailSender) }}
+                                </div>
+                                <div class="mb-5">
+                                    {{ form_row(contactForm.subject) }}
+                                </div>
+                                <div class="mb-5">
+                                    {{ form_row(contactForm.message) }}
+                                </div>
+                                <div class="mb-5">
+                                    <button type="submit" value="submit" id="btn_submit" class="btn btn-yellow" onClick="proceed();">
+                                        Envoyer
+                                        <span class="material-symbols-outlined">outgoing_mail</span>
+                                    </button>
+                                </div>
+                                {{ form_end(contactForm) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="heading text-left margin-bottom-20">
+                            <h3> Solutions <span>For</span></h3>
+                            <hr>
+                        </div>
+                        <ul class="services-intro">
+                            <!-- Architecture -->
+                            <li>
+                                <div class="media-left">
+                                    <div class="icon"><img src="images/intro-icon-3.png" alt=""></div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="font-normal margin-bottom-10">Architecture</h6>
+                                    <p>Create your dream house with us</p>
+                                </div>
+                            </li>
+                            <!-- Interior Design -->
+                            <li>
+                                <div class="media-left">
+                                    <div class="icon"><img src="images/intro-icon-4.png" alt=""></div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="font-normal margin-bottom-10">Interior Design</h6>
+                                    <p>A new touch is always welcome</p>
+                                </div>
+                            </li>
+                            <!-- Consulting -->
+                            <li>
+                                <div class="media-left">
+                                    <div class="icon"><img src="images/intro-icon-5.png" alt=""></div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="font-normal margin-bottom-10">Consulting</h6>
+                                    <p>Fresh minds with creative ideas</p>
+                                </div>
+                            </li>
+                            <!-- Special Projects -->
+                            <li>
+                                <div class="media-left">
+                                    <div class="icon"><img src="images/intro-icon-6.png" alt=""></div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="font-normal margin-bottom-10">Special Projects</h6>
+                                    <p>We do best work to your projects</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+    </div>
+{% endblock %}

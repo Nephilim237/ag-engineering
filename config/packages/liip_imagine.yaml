@@ -19,7 +19,17 @@ liip_imagine:
                 thumbnail: { size: [1200, 400], mode: outbound }
 #                background: { size: [124, 94], position: center, color: '#000000' }
 
-        service_thumbnail:
-            quality: 50
+        blog_image:
+            quality: 100
             filters:
                 thumbnail: { size: [360, 240], mode: outbound }
+
+        blog_banner:
+            quality: 75
+            filters:
+                thumbnail: { size: [1000, 350], mode: outbound }
+
+        partner:
+            quality: 75
+            filters:
+                thumbnail: { size: [168, 34], mode: outbound }

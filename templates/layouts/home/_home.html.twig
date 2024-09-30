@@ -19,7 +19,7 @@
     {% include 'layouts/home/home_partials/_home_latest_works.html.twig' with { works: works, workCategories: workCategories } %}
 
     <!-- WHY CHOOSE US -->
-    <section class="py-md-60 padding-top-150 padding-bottom-150 why-choose-use">
+    <section class="py-md-60 padding-top-150 light-gray-bg padding-bottom-150 why-choose-use">
         <div class="container">
             <!-- HEADING -->
             <div class="heading text-center mb-3">
@@ -65,17 +65,17 @@
 
                         <!-- ELEMENT -->
                         {% for prestation in prestations %}
-                        <li class="col-md-6">
-                            <article>
-                                <div class="media-left">
-                                    <div class="icon"><img src="{{ vich_uploader_asset(prestation, 'iconImage') }}" alt="{{ prestation.title }}"></div>
-                                </div>
-                                <div class="media-right">
-                                    <h6 class="font-normal margin-bottom-10">{{ prestation.title }}</h6>
-                                    <p>{{ prestation.description }}</p>
-                                </div>
-                                <span class="go"><i class="fa fa-angle-right"></i></span></article>
-                        </li>
+                            <li class="col-md-6">
+                                <article>
+                                    <div class="media-left">
+                                        <div class="icon"><img src="{{ vich_uploader_asset(prestation, 'iconImage') }}" alt="{{ prestation.title }}"></div>
+                                    </div>
+                                    <div class="media-right">
+                                        <h6 class="font-normal margin-bottom-10">{{ prestation.title }}</h6>
+                                        <p>{{ prestation.description }}</p>
+                                    </div>
+                                    <span class="go"><i class="fa fa-angle-right"></i></span></article>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -84,80 +84,7 @@
     </section>
 
     <!-- Testimonial -->
-    <section class="testimonial light-gray-bg py-md-60 padding-top-150 padding-bottom-150">
-        <div class="container">
-
-            <!-- Heading -->
-            <div class="heading text-center margin-bottom-60">
-                <h3>Ils <span>Témoignent</span></h3>
-                <hr>
-                <p>The Love Boat soon will be making another run the Love Boat promises something for everyone</p>
-            </div>
-
-            <!-- Test Slider -->
-            <div class="testi">
-                <div class="testi-two">
-
-                    <!-- Slider 1 -->
-                    <div class="media">
-                        <div class="in-testi">
-                            <p>Just two good ol' boys Never meanin' no harm. Beats all you've ever saw been in trouble with the law since the day they was born.
-                                The Brady Bunch the Brady Bunch that's the way we all became the Brady Bunch.</p>
-                            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                        class="fa fa-star-half-o"></i></div>
-                        </div>
-
-                        <!-- Avatar -->
-                        <div class="testi-name">
-                            <div class="media-left"><a class="avatar" href="#."> <img class="media-object" src="images/avatar-testi.jpg" alt=""> </a></div>
-                            <!-- Content -->
-                            <div class="media-body relative padding-left-10"><i class="fa fa-quote-left quote"></i>
-                                <h5>Steven Smith</h5>
-                                <span>ceo & founder</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Slider 2 -->
-                    <div class="media">
-                        <div class="in-testi">
-                            <p>Just two good ol' boys Never meanin' no harm. Beats all you've ever saw been in trouble with the law since the day they was born.
-                                The Brady Bunch the Brady Bunch that's the way we all became the Brady Bunch.</p>
-                            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                        class="fa fa-star-half-o"></i></div>
-                        </div>
-
-                        <!-- Avatar -->
-                        <div class="testi-name">
-                            <div class="media-left"><a class="avatar" href="#."> <img class="media-object" src="images/avatar-testi-1.jpg" alt=""> </a></div>
-                            <!-- Content -->
-                            <div class="media-body relative padding-left-10"><i class="fa fa-quote-left quote"></i>
-                                <h5>Steven Smith</h5>
-                                <span>ceo & founder</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Slider 3 -->
-                    <div class="media">
-                        <div class="in-testi">
-                            <p>Just two good ol' boys Never meanin' no harm. Beats all you've ever saw been in trouble with the law since the day they was born.
-                                The Brady Bunch the Brady Bunch that's the way we all became the Brady Bunch.</p>
-                            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                        class="fa fa-star-half-o"></i></div>
-                        </div>
-
-                        <!-- Avatar -->
-                        <div class="testi-name">
-                            <div class="media-left"><a class="avatar" href="#."> <img class="media-object" src="images/avatar-testi.jpg" alt=""> </a></div>
-                            <!-- Content -->
-                            <div class="media-body relative padding-left-10"><i class="fa fa-quote-left quote"></i>
-                                <h5>Steven Smith</h5>
-                                <span>ceo & founder</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {# Reservé pour le section des temoignages #}
 
     <!-- BLOG -->
     {% include 'layouts/home/home_partials/_home_blog_section.html.twig' %}
@@ -166,24 +93,21 @@
     <section class="clients light-gray-bg py-md-60 padding-top-100 padding-bottom-100">
         <div class="container">
             <div class="single-slide">
-                <div class="item">
-                    <ul class="row margin-top-5">
-                        <li><a href="#."> <img src="images/c-img-1.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-2.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-3.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-4.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-5.png" class="img-responsive" alt=""> </a></li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <ul class="row margin-top-5">
-                        <li><a href="#."> <img src="images/c-img-4.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-1.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-2.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-3.png" class="img-responsive" alt=""> </a></li>
-                        <li><a href="#."> <img src="images/c-img-2.png" class="img-responsive" alt=""> </a></li>
-                    </ul>
-                </div>
+                {% for subPartners in partners %}
+                    <div class="item">
+                        <ul class="row margin-top-5">
+                            {% for eachPartner in subPartners %}
+                                <li>
+                                    <a href="{{ eachPartner.link }}" target="_blank">
+                                        <img src="{{ asset('uploads/images/partners/' ~ eachPartner.partnerImage ) | imagine_filter('partner') }}"
+                                             class="img-responsive"
+                                             alt="{{ eachPartner.name }}">
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

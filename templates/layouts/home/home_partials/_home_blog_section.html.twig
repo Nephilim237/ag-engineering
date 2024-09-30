@@ -14,30 +14,8 @@
             <div class="row">
                 {% for post in posts %}
                     <!-- BLOG -->
-                    <div class="col-md-6 px-5 my-5">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img class="img-responsive" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="{{ post.title }}">
-                                {#<div class="date text-uppercase">#}
-                                {#</div>#}
-                                {# <div class="date text-uppercase"> {{ post.createdAt | date('d M', 'Africa/Douala') }}</div> #}
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="post-info">
-                                    <div class="author-and-date d-flex justify-content-between my-3">
-                                        <span class="">By {{ post.author.name }}</span>
-                                        <span class="post-date font-italic">
-                                            {{ post.createdAt | format_datetime('medium', 'medium', locale='fr', timezone='Africa/Douala') }}
-                                        </span>
-
-                                    </div>
-                                    <a href="#" class="tittle-post font-oswald">{{ post.title }} </a>
-                                    <hr class="main">
-                                    <p class="letter-space-1">{{ post.content | striptags | u.truncate(120, '...', false) }}</p>
-                                    <a href="{{ path('blog_single', {slug: post.slug}) }}" class="btn font-pt">Lire l'article</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-6">
+                        {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
                     </div>
                 {% endfor %}
             </div>

@@ -1,0 +1,17 @@
+<div class="row px-lg-5 my-lg-5">
+    <img class="img-responsive"
+         src="{% if (post.postImage ?? null) is not null %}{{ asset('uploads/images/posts/' ~ post.postImage) | imagine_filter('blog_image') }}{% endif %}"
+         alt="{{ post.title }}">
+    <div class="post-info">
+        {# <div class="author-and-date d-flex justify-content-between my-3"> #}
+        {#    <span class="">Par {{ post.author.name }}</span> #}
+        {#    <span class="post-date font-italic"> #}
+        {#        {{ post.createdAt | format_datetime('medium', 'medium', locale='fr', timezone='Africa/Douala') }} #}
+        {#    </span> #}
+        {# </div> #}
+        <a href="#" class="tittle-post font-oswald">{{ post.title | u.truncate(72, '...', false) | raw }} </a>
+        <hr class="main">
+        <p class="letter-space-1">{{ post.content | u.truncate(254, '...', false) | raw }}</p>
+        <a href="{{ path('blog_single', {slug: post.slug}) }}" class="btn font-pt">Lire l'article</a>
+    </div>
+</div>

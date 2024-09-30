@@ -60,3 +60,10 @@ vich_uploader:
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             delete_on_update: false
             delete_on_remove: false
+
+        partners:
+            uri_prefix: '%path.partners%'
+            upload_destination: '%kernel.project_dir%/public/%path.partners%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: false
+            delete_on_remove: false

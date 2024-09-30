@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ServiceCrudController extends AbstractCrudController
@@ -27,7 +28,9 @@ class ServiceCrudController extends AbstractCrudController
     {
         return parent::configureCrud($crud)
             ->setPageTitle('index', 'Prestations & Services')
-            ->setPageTitle('new', 'Ajouter un nouvel élément');
+            ->setPageTitle('new', 'Ajouter Un Nouveau Service')
+            ->setPaginatorPageSize(10)
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
 
     public function configureFields(string $pageName): iterable
@@ -51,7 +54,7 @@ class ServiceCrudController extends AbstractCrudController
                 ->setBasePath(self::UPLOAD_SERVICE_ICONS_BASE_PATH)
                 ->setUploadDir(self::UPLOAD_SERVICE_ICONS_ROOT_PATH)
                 ->setSortable(false),
-            TextEditorField::new('description', 'Description'),
+            TextEditorField::new('description')->setFormType(CKEditorType::class)->hideOnIndex(),
         ];
     }
 }

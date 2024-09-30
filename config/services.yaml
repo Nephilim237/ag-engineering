@@ -12,8 +12,8 @@ parameters:
     path.services.icons: 'uploads/images/services/icons'
     path.prestations.icons: 'uploads/images/prestations/icons'
     path.our_work: 'uploads/images/our_works'
-
-
+    path.partners: 'uploads/images/partners'
+    contact_mail: '%env(CONTACT_EMAIL)%'
 services:
     # default configuration for services in *this* file
     _defaults:

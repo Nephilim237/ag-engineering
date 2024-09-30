@@ -27,9 +27,9 @@
             <!-- Navigation -->
             <nav class="navbar">
                 <ul class="nav ownmenu">
-                    <li class="active"><a href="{{ path('app_home') }}">Accueil</a></li>
-                    {# <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="{{ app.request.get('_route') == 'app_home' ? 'active' : '' }}"><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li class="{{ app.request.get('_route') == 'app_blog' ? 'active' : '' }}"><a href="{{ path('app_blog') }}">Blog</a></li>
+                   {# <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="index.html">Pages</a>
                         <ul class="dropdown">
@@ -46,8 +46,8 @@
                             <li><a href="404-page.html">404</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact us</a></li> #}
+                    <li><a href="blog.html">Blog</a></li>#}
+                    <li class="{{ app.request.get('_route') == 'app_contact' ? 'active' : '' }}"><a href="{{ path('app_contact') }}">Nous contacter</a></li>
                 </ul>
 
                 {% if app.user %}

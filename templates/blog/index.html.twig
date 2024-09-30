@@ -1,20 +1,138 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Blog{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/codingity/Desktop/AGE/backend/src/Controller/BlogController.php</code></li>
-        <li>Your template at <code>C:/Users/codingity/Desktop/AGE/backend/templates/blog/index.html.twig</code></li>
-    </ul>
-</div>
+    <!-- SUB BANNER -->
+    <section class="sub-bnr">
+        <div class="position-center-center">
+            <div class="container">
+                <h4>BLOG</h4>
+                <hr class="main">
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li class="active">BLOG</li>
+                </ol>
+            </div>
+        </div>
+        <div class="scroll"><a href="#content" class="go-down"></a></div>
+    </section>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- LATEST WORK -->
+        <section class="padding-top-150 padding-bottom-150">
+            <div class="container">
+
+
+                <!-- NEWS -->
+                <div class="blog blog-post">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="heading text-left">
+                                <h3> De notre <span>Blog</span></h3>
+                                <hr>
+                            </div>
+
+                            {% if paginatedPosts | length > 0 %}
+                                <!-- NEWS -->
+                                {% for post in paginatedPosts %}
+                                    {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
+                                {% endfor %}
+
+                            {% endif %}
+
+                            <!-- Pagination -->
+                            <div class="blog-pagination mt-5">
+                                {{ knp_pagination_render(paginatedPosts) }}
+                            </div>
+
+
+                        </div>
+
+
+                        <!--======= Side Bar =========-->
+                        <div class="col-md-3">
+                            <div class="side-bar">
+
+                                <!--======= Search =========-->
+                                <div class="search">
+                                    <input class="form-control" type="search" placeholder="Search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+
+                                <!--======= Categories =========-->
+                                <h5 class="side-tittle margin-top-50">Post Category </h5>
+                                <hr class="main">
+                                <ul class="cate">
+                                    <li><a href="#.">Building plans </a></li>
+                                    <li><a href="#.">Architecture </a></li>
+                                    <li><a href="#.">Workspace Interior </a></li>
+                                    <li><a href="#.">Building Renovation </a></li>
+                                    <li><a href="#.">Exterior Design </a></li>
+                                    <li><a href="#.">Building Consultancy </a></li>
+
+                                </ul>
+
+                                <!--======= Recent Posts =========-->
+                                <h5 class="side-tittle margin-top-50">Recent Posts </h5>
+                                <hr class="main">
+                                <ul class="papu-post">
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-1.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-2.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be</a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-3.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-left"><a href="#"> <img class="media-object" src="images/img-4.jpg" alt=""></a></div>
+                                        <div class="media-body"><a class="media-heading" href="#.">Like Robinson Crusoe it is Primitive as can be </a> <span>Jul 18, 2015</span>
+                                        </div>
+                                    </li>
+                                </ul>
+
+
+                                <!--======= Archives =========-->
+                                <h5 class="side-tittle margin-top-50">Archives </h5>
+                                <hr class="main">
+                                <ul class="cate">
+                                    <li><a href="#.">June <span>10</span></a></li>
+                                    <li><a href="#.">May <span>21</span></a></li>
+                                    <li><a href="#.">April <span>58</span></a></li>
+                                    <li><a href="#.">March 2015 <span>25</span></a></li>
+                                </ul>
+                                <h5 class="side-tittle margin-top-50">Tags </h5>
+                                <hr class="main">
+                                <ul class="tags">
+                                    <li><a href="#.">Amazing </a></li>
+                                    <li><a href="#.">Envato </a></li>
+                                    <li><a href="#.">Themes </a></li>
+                                    <li><a href="#.">Responsiveness </a></li>
+                                    <li><a href="#.">SEO </a></li>
+                                    <li><a href="#.">Mobile </a></li>
+                                    <li><a href="#.">IOS </a></li>
+                                    <li><a href="#.">Design </a></li>
+                                    <li><a href="#.">Flat </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
 {% endblock %}

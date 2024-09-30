@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\HomeBanner;
 use App\Entity\OurWork;
+use App\Entity\Partner;
 use App\Entity\Post;
 use App\Entity\Prestation;
 use App\Entity\Service;
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Gestion des Ouvrages', 'fas fa-building', OurWork::class),
             MenuItem::linkToCrud('Type D\'Ouvrages', 'fas fa-briefcase', WorkCategory::class),
         ]);
+        yield MenuItem::linkToCrud('Partenaires', 'fa-solid fa-handshake', Partner::class);
         yield MenuItem::linkToCrud('Services', 'fas fa-hands-helping', Service::class);
         yield MenuItem::linkToCrud('Prestations', 'fas fa-cogs', Prestation::class);
         yield MenuItem::linkToCrud('Bannières A La Une', 'fas fa-flag', HomeBanner::class);

@@ -18,9 +18,8 @@
                     {% if services | length > 0 %}
                         {% for service in services %}
                             <li class="col-md-6">
-                                <img class="img-responsive" src="{{ vich_uploader_asset(service, 'imageFile') | imagine_filter('service_thumbnail') }}"
-                                     alt="{{ service
-                                     .title }}">
+                                <img class="img-responsive" src="{{ vich_uploader_asset(service, 'imageFile') | imagine_filter('blog_preview_image') }}"
+                                     alt="{{ service.title }}">
                                 <div class="intro-ser">
                                     <div class="tag"><img src="{{ vich_uploader_asset(service, 'iconImage') }}" alt="Icone {{ service.icon }}"></div>
                                     <h6 class="font-normal no-margin margin-bottom-20">{{ service.title }}</h6>

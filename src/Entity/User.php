@@ -76,10 +76,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Category::class, mappedBy: 'author', orphanRemoval: true)]
     private Collection $categories;
 
+    /**
+     * @var Collection<int, Partner>
+     */
+    #[ORM\OneToMany(targetEntity: Partner::class, mappedBy: 'author')]
+    private Collection $partners;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->partners = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -314,6 +321,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($category->getAuthor() === $this) {
                 $category->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partner>
+     */
+    public function getPartners(): Collection
+    {
+        return $this->partners;
+    }
+
+    public function addPartner(Partner $partner): static
+    {
+        if (!$this->partners->contains($partner)) {
+            $this->partners->add($partner);
+            $partner->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartner(Partner $partner): static
+    {
+        if ($this->partners->removeElement($partner)) {
+            // set the owning side to null (unless already changed)
+            if ($partner->getAuthor() === $this) {
+                $partner->setAuthor(null);
             }
         }
 
