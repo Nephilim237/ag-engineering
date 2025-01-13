@@ -10,7 +10,8 @@
                         <img src="{{ vich_uploader_asset(banner, 'imageFile') | imagine_filter('banner') }}" alt="Image de bannière"
                              data-bgposition="center top"
                              data-bgfit="cover"
-                             data-bgrepeat="no-repeat">
+                             data-bgrepeat="no-repeat"
+                             class="age-home-slide-image">
                         <!-- LAYERS -->
 
                         <!-- LAYER NR. 1 -->
@@ -29,7 +30,7 @@
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfb font-bold text-center tp-resizeme"
+                        <div class="tp-caption sfb text-center tp-resizeme age-home-banner-slide"
                              data-x="center" data-hoffset="0"
                              data-y="center" data-voffset="40"
                              data-speed="500"
@@ -45,7 +46,7 @@
                         </div>
 
                         <!-- LAYER NR. 3 -->
-                        <div class="tp-caption sfb font-bold text-center tp-resizeme"
+                        <div class="tp-caption sfb text-center tp-resizeme age-home-banner-slide"
                              data-x="center" data-hoffset="0"
                              data-y="center" data-voffset="60"
                              data-speed="500"
@@ -72,8 +73,8 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7;">
-                            <a href="#" class="btn btn-blue margin-right-20">VOIR PLUS</a>
-                            <a href="#" class="btn btn-white margin-left-20">Voir Nos Services</a>
+                            <a href="#" class="btn btn-blue margin-right-20">CONSULTER NOS REALISATIONS</a>
+                            {# <a href="#" class="btn btn-white margin-left-20">Voir Nos Services</a> #}
                         </div>
                     </li>
                 {% endfor %}

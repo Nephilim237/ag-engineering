@@ -40,14 +40,16 @@
 
                             {% if paginatedPosts | length > 0 %}
                                 <!-- NEWS -->
-                                {% for post in paginatedPosts %}
-                                    {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
-                                {% endfor %}
+                                <div class="row">
+                                    {% for post in paginatedPosts %}
+                                        {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
+                                    {% endfor %}
+                                </div>
 
                             {% endif %}
 
                             <!-- Pagination -->
-                            <div class="blog-pagination mt-5">
+                            <div class="blog-pagination mt-3">
                                 {{ knp_pagination_render(paginatedPosts) }}
                             </div>
 
