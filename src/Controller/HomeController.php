@@ -35,7 +35,7 @@ class HomeController extends AbstractController
             'prestations' => $prestationRepository->getLastElements(4),
             'works' => $workRepository->getRecentsWorks(4),
             'workCategories' => $workCategoryRepository->getRecentsWorkCategories(4),
-            'posts' => $postRepository->getRecentsPosts(2),
+            'posts' => $postRepository->getRecentsPosts(3),
             'partners' => $partners,
         ]);
     }

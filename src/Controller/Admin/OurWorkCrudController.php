@@ -3,12 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\OurWork;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class OurWorkCrudController extends AbstractCrudController
@@ -19,6 +21,12 @@ class OurWorkCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return OurWork::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return parent::configureCrud($crud)
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
 
     public function configureFields(string $pageName): iterable
@@ -34,8 +42,8 @@ class OurWorkCrudController extends AbstractCrudController
                 ->setBasePath(self::UPLOADS_OURWORK_BASE_PATH)
                 ->setUploadDir(self::UPLOADS_OURWORK_ROOT_PATH)
                 ->setSortable(false),
-            TextEditorField::new('description', 'Décrivez Cette Oeuvre'),
-            AssociationField::new('workCategory', 'A Quelle Catégorie Appartient Cette Oeuvre?')
+            AssociationField::new('workCategory', 'A Quelle Catégorie Appartient Cette Oeuvre?'),
+            TextEditorField::new('description')->setFormType(CKEditorType::class)->hideOnIndex(),
         ];
     }
 }

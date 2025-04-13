@@ -20,10 +20,10 @@ class Prestation
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 32)]
+    #[ORM\Column(length: 40)]
     #[Assert\NotBlank]
     #[Assert\Length(
-        max: 32,
+        max: 40,
         maxMessage: 'Maximum {{ limit }} charactères, actuellement vous avez {{ value_length }} charactères',
     )]
     private ?string $description = null;

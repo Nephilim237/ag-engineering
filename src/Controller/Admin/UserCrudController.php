@@ -42,6 +42,9 @@ class UserCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return parent::configureActions($actions)
+            ->setPermission(Action::BATCH_DELETE, 'ROLE_ADMIN_SYS')
+            ->setPermission(Action::DELETE, 'ROLE_ADMIN_SYS')
+            ->setPermission(Action::EDIT, 'ROLE_ADMIN_SYS')
             ->update('index', 'new', function (Action $action) {
                 return $action
                     ->setLabel('Nouvel Employé')
@@ -54,7 +57,7 @@ class UserCrudController extends AbstractCrudController
                     ->setIcon('fas fa-user-edit')
                     ->setCssClass('text-capitalize');
             })
-            ->update('index', Action::DELETE, function (Action $action) {
+            ->update('index', Action::BATCH_DELETE, function (Action $action) {
                 return $action
                     ->setLabel('Supprimer')
                     ->setIcon('fas fa-user-slash')
@@ -78,22 +81,21 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('firstname', 'Prénom'),
-            TextField::new('name', 'Nom'),
+            TextField::new('firstname', 'Prénom')->hideWhenUpdating(),
+            TextField::new('name', 'Nom')->hideWhenUpdating(),
             TextField::new('slug', 'Slug')->onlyOnIndex(),
-            EmailField::new('email', 'Email'),
+            EmailField::new('email', 'Email')->setPermission('ROLE_ADMIN'),
             ChoiceField::new('roles', 'role')->allowMultipleChoices()->setChoices([
-                'Directeur Général' => 'ROLE_BOSS',
                 'Administrateur Système' => 'ROLE_ADMIN_SYS',
                 'Administrateur' => 'ROLE_ADMIN',
                 'Modérateur' => 'ROLE_MODO',
                 'Employé' => 'ROLE_EMPLOYEE',
                 'Rédacteur' => 'ROLE_WRITER',
-            ])->onlyOnForms(),
-            TextField::new('imageFile', 'Illustration')
+            ])->setPermission('ROLE_ADMIN'),
+            TextField::new('imageFile', 'Illustration')->hideWhenUpdating()
                 ->hideOnIndex()
                 ->setFormType(VichImageType::class)->setColumns('col-sm-12 col-md-3'),
-            ImageField::new('profileImage', 'Photo de Profil')
+            ImageField::new('profileImage', 'Photo de Profil')->hideWhenUpdating()
                 ->hideOnForm()
                 ->setBasePath(self::UPLOAD_USER_BASE_PATH)
                 ->setUploadDir(self::UPLOAD_USER_ROOT_PATH)
