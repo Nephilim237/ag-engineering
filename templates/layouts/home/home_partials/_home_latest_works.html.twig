@@ -27,7 +27,8 @@
                     <li class="item col-md-3 mb-3 {% for category in work.workCategory %} {{ category.slug }} {% endfor %}">
                         <div class="gal-item">
                             <!-- GALLERY IMAGE -->
-                            <img src="{{ vich_uploader_asset(work, 'vichWorkImageFile') }}" alt="{{ work.title }}" class="img-responsive">
+                            <img src="{{ vich_uploader_asset(work, 'vichWorkImageFile') | imagine_filter('blog_image') }}" alt="{{ work.title }}"
+                                 class="img-responsive">
                             <!-- Hover Info -->
                             <div class="hover-info">
                                 <h6>{{ work.title }}</h6>

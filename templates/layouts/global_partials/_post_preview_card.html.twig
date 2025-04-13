@@ -1,4 +1,4 @@
-<div class="col-md-6 px-lg-5 my-lg-5">
+<div class="col-md-4 px-lg-4 my-lg-4">
     <img class="img-responsive"
          src="{% if (post.postImage ?? null) is not null %}{{ asset('uploads/images/posts/' ~ post.postImage) | imagine_filter('blog_image') }}{% endif %}"
          alt="{{ post.title }}">

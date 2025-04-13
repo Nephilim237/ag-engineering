@@ -30,29 +30,34 @@
             <!-- Row -->
             <div class="row">
                 <div class="col-md-5">
-                    <p class="line-height-26">Maybe you and me were never meant to be. But baby think me once in awhile. I'm at WKRP in Cincinnati." But they
-                        got diff'rent strokes. It takes diff'rent strokes different strokes to move the world Beats with the law since the day they was
-                        born.<br>
-                        They call him Flipper Flipper faster than lightning. No one you see is smarter than he.</p>
+                    <p class="line-height-26">
+                        Votre partenaire en ingénierie multidisciplinaire Nous sommes spécialisés en électricité, mécanique, froid, climatisation et étude de
+                        projet. Grâce à notre expertise et à notre engagement envers la qualité, nous vous offrons des solutions innovantes, fiables et adaptées
+                        à vos besoins. Notre priorité : votre satisfaction, votre confort et le succès de vos projets. Avec nous, choisissez l'excellence et la
+                        tranquillité d'esprit. 😊
+                    </p>
 
                     <!-- Process -->
                     <div class="num-process pb-3">
                         <ul class="row">
                             <!-- 1 -->
-                            <li class="col-4">
-                                <div class="icon"><span>1</span></div>
+                            <li class="col-4 text-center">
+                                {#<div class="icon"><span>1</span></div>#}
+                                <img class="age-thumbnail" src="{{ asset('assets/images/efficient.png') }}" alt="Efficacite">
                                 <p>Efficacité</p>
                             </li>
 
                             <!-- 2 -->
-                            <li class="col-4">
-                                <div class="icon"><span>2</span></div>
+                            <li class="col-4 text-center">
+                                {#<div class="icon"><span>2</span></div>#}
+                                <img class="age-thumbnail" src="{{ asset('assets/images/assistant.png') }}" alt="Efficacite">
                                 <p>Assistance 24/7</p>
                             </li>
 
                             <!-- 3 -->
-                            <li class="col-4">
-                                <div class="icon"><span>3</span></div>
+                            <li class="col-4 text-center">
+                                {#<div class="icon"><span>3</span></div>#}
+                                <img class="age-thumbnail" src="{{ asset('assets/images/professional.png') }}" alt="Efficacite">
                                 <p>Professionnalisme</p>
                             </li>
                         </ul>
@@ -68,7 +73,9 @@
                             <li class="col-md-6">
                                 <article>
                                     <div class="media-left">
-                                        <div class="icon"><img src="{{ vich_uploader_asset(prestation, 'iconImage') }}" alt="{{ prestation.title }}"></div>
+                                        <div class="icon"><img src="{{ vich_uploader_asset(prestation, 'iconImage') | imagine_filter('thumbnail') }}" alt="{{
+                                            prestation.title
+                                            }}"></div>
                                     </div>
                                     <div class="media-right">
                                         <h6 class="font-normal margin-bottom-10">{{ prestation.title }}</h6>

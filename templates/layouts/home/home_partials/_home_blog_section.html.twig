@@ -6,17 +6,18 @@
             <div class="heading text-center">
                 <h3>Faites un tour sur notre <span>Blog</span></h3>
                 <hr>
-                <p>The Love Boat soon will be making another run the Love Boat promises something for everyone
-                    Today still wanted by the government they survive as soldiers of fortune.</p>
+                <p>
+                    Boostez vos compétences techniques ! Découvrez des astuces pratiques et des conseils indispensables pour l'entretien de vos équipements
+                    électriques, mécaniques et climatiseurs. Simples, efficaces et à votre portée, chaque article est conçu pour vous faciliter la vie.
+                    Rejoignez-nous et maîtrisez l'art de la maintenance en toute sérénité ! 😊
+                </p>
             </div>
 
             <!-- Row -->
             <div class="row">
                 {% for post in posts %}
                     <!-- BLOG -->
-                    <div class="col-md-6">
-                        {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
-                    </div>
+                    {% include 'layouts/global_partials/_post_preview_card.html.twig' %}
                 {% endfor %}
             </div>
         </div>
